@@ -4,6 +4,8 @@ from dotenv import load_dotenv
 from llama_index.core import Settings
 from llama_index.llms.openai import OpenAI
 from llama_index.embeddings.huggingface import HuggingFaceEmbedding
+from sentence_transformers import SentenceTransformer
+
 
 def init_environment():
     load_dotenv(override=True)
@@ -14,14 +16,19 @@ def init_environment():
     Settings.llm = OpenAI(
         api_key=api_key,
         api_base="https://openrouter.ai/api/v1", 
-        model="mistralai/mistral-7b-instruct",
+        model="gpt-3.5-turbo",
         temperature=0.2,
         max_tokens=512
     )
-    Settings.embed_model = HuggingFaceEmbedding(
-    model_name="BAAI/bge-small-en-v1.5"
-)
+
+    # ✅ Load Lora Fine Tuned Embedding Model
+    from sentence_transformers import SentenceTransformer
+
+    st_model = SentenceTransformer("./legalbert-embedding-lora")
+    Settings.embed_model = HuggingFaceEmbedding(model_name="./legalbert-embedding-lora")
+
+
 
     nest_asyncio.apply()
-    print("Enviroment Initialization Complete")
+    print("✅ Environment Initialization Complete")
 

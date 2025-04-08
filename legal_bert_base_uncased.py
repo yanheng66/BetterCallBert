@@ -71,8 +71,8 @@ def evaluate_legal_bert(test_texts, test_labels, model_name="nlpaueb/legal-bert-
         print(f"   - Contract: {c_prob:.2f}%")
         print(f"   - Tort    : {t_prob:.2f}%")
         explanation = (
-            f"🧠 模型判断更偏向『合同法』，置信度为 {c_prob:.1f}%" if c_prob > t_prob
-            else f"🧠 模型判断更偏向『侵权法』，置信度为 {t_prob:.1f}%"
+            f"🧠 Model more『Contract』，Confidence is {c_prob:.1f}%" if c_prob > t_prob
+            else f"🧠 Model more『Tort』，Confidence is {t_prob:.1f}%"
         )
         print(f"📣 {explanation}")
 
