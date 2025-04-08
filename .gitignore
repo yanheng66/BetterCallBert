@@ -1,1 +1,4 @@
 .env
+legalbert-embedding-lora/
+legalbert-lora-finetuned/
+legalbert-embedding/
