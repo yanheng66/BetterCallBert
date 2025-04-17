@@ -35,7 +35,7 @@ class WeightedFusionRetriever(BaseRetriever):
             else:
                 merged[r.node.node_id] = (self.weight_b * b_scores[i], r.node)
 
-        result = [NodeWithScore(score=s, node=n) for _, (s, n) in merged.items()]
+        result = [NodeWithScore(node=n, score=s) for _, (s, n) in merged.items()]
         result.sort(key=lambda x: x.score, reverse=True)
         return result[:self.top_k]
 

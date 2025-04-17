@@ -8,6 +8,7 @@ from transformers import (
 from peft import get_peft_model, LoraConfig, TaskType
 import torch
 import os
+from peft import PeftModel
 
 # ========== Set Up ==========
 MODEL_NAME = "nlpaueb/legal-bert-base-uncased"
@@ -79,8 +80,18 @@ trainer = Trainer(
 # ========== Step 6: Start Training ==========
 trainer.train()
 
-# ========== Step 7: Save Model ==========
+# ========== Step 7: Save Final Model ==========
+
+
+# ✅ merge LoRA into base model
+model = model.merge_and_unload()
+
+# ✅ 写入真实的标签映射
+model.config.label2id = LABEL2ID
+model.config.id2label = ID2LABEL
+
+# ✅ save merged model ONLY
 model.save_pretrained(os.path.join(OUTPUT_DIR, "final"))
 tokenizer.save_pretrained(os.path.join(OUTPUT_DIR, "final"))
 
-print("✅ LoRA fine tune finished, save to:", os.path.join(OUTPUT_DIR, "final"))
+print("✅ LoRA fine-tuned full model saved to:", os.path.join(OUTPUT_DIR, "final"))

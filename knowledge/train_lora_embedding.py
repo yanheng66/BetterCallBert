@@ -8,7 +8,7 @@ import json
 
 # ========= Configuration =========
 MODEL_NAME = "nlpaueb/legal-bert-base-uncased"
-DATA_PATH = "data/legal_classification_data.jsonl"
+DATA_PATH = "data/legal_embedding_pairs.jsonl"
 BATCH_SIZE = 8
 EPOCHS = 10
 OUTPUT_PATH = "./legalbert-embedding-lora"
@@ -18,7 +18,7 @@ with open(DATA_PATH, "r") as f:
     raw_data = [json.loads(line) for line in f if line.strip()]
 
 train_examples = [
-    InputExample(texts=[item["text"], item["text"]]) for item in raw_data  # Using the same text to form positive pairs
+    InputExample(texts=[item["text1"], item["text2"]]) for item in raw_data  # Using the same text to form positive pairs
 ]
 
 # ========= Tokenizer & Model =========

@@ -3,3 +3,8 @@ legalbert-embedding-lora/
 legalbert-lora-finetuned/
 legalbert-embedding/
 .env*local
+legal_bert_base_uncased
+data
+vector_store_minilm
+vector_store_minilm_old
+tmp
