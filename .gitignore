@@ -8,3 +8,6 @@ data
 vector_store_minilm
 vector_store_minilm_old
 tmp
+venv
+cache
+logs
