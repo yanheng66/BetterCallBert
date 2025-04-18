@@ -122,6 +122,9 @@ Then open your browser to http://localhost:8501
 - **UI and Integration:**
   - Streamlit: Web interface
   - OpenRouter: LLM API access (Mistral-7B-Instruct)
+ 
+### Sreamlit Screenshot
+<img width="789" alt="Streamlit" src="https://github.com/user-attachments/assets/22b7c5f4-51e5-41ca-825a-c5b240e2a994" />
 
 ### Data Flow
 
